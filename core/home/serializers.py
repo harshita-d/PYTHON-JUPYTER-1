@@ -11,6 +11,13 @@ class MovieListSerializer(serializers.Serializer):
     def create(self, validated_data):
         return MovieList.objects.create(**validated_data)
 
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get("title", instance.title)
+        instance.storyline = validated_data.get("storyline", instance.storyline)
+        instance.active = validated_data.get("active", instance.active)
+        instance.save()
+        return instance
+
 
 class PlatformListSerializer(serializers.Serializer):
 

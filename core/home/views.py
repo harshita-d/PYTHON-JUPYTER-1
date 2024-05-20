@@ -3,9 +3,11 @@ from .models import PlatformList, MovieList
 from .serializers import MovieListSerializer, PlatformListSerializer
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 
 @csrf_exempt
+@api_view(["GET", "POST"])
 def movieListView(request):
     if request.method == "GET":
         movies = MovieList.objects.all()

@@ -7,8 +7,8 @@ from .views import (
 )
 
 urlpatterns = [
-    path("list/", movieListView),
-    path("list/<int:pk>", movieListIndexView),
-    path("platform/", platformListView),
-    path("platform/<int:pk>", platformListIndexView),
+    path("list/", movieListView, name="movie-list"),
+    path("list/<int:pk>", movieListIndexView, name="movie-id-list"),
+    path("platform/", platformListView, name="platform-list"),
+    path("platform/<int:pk>", platformListIndexView, name="platform-id-list"),
 ]
