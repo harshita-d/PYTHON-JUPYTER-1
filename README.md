@@ -132,3 +132,21 @@ moreover we can write like
 EXTERNAL_APPS=['home','accounts'...]
 INSTALLED_APPS+=EXTERNAL_APPS
 ```
+
+## which logic to put in which file
+
+- Model (models.py):
+
+  - Define the Product model with fields like name, price, quantity, etc.
+  - Implement methods like get_discounted_price() or calculate_total_cost() within the model.
+
+- View (views.py):
+
+  - Receive search queries from users.
+  - Use the Product model's query methods to search for products matching the query.
+  - Return search results to users.
+
+- Serializer (serializers.py) (If using Django REST Framework):
+
+  - Validate search query parameters if the view is an API endpoint.
+  - Serialize product data for API responses if necessary.
