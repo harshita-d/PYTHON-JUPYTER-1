@@ -93,3 +93,5 @@ urlpatterns = [
 - When a `request matches` the specified `URL pattern`, Django calls the `as_view()` method to instantiate the CBV and `route the request` to the appropriate `method (get, post, etc.)` based on the HTTP method of the request.
 
 - In `function-based views` (FBVs), you define a `Python function` to handle a particular `URL pattern` directly. Unlike `class-based views` (CBVs), there's no need to use a method like as_view() because a `function itself` is already `callable`.
+
+#
