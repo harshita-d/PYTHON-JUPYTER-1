@@ -9,6 +9,9 @@ from .serializers import forbesListSerializer
 # Create your views here.
 class forbesListView(APIView):
     def get(self, request):
-        forbesList = forbesListModel.objects.all()
-        serializer = forbesListSerializer(forbesList, many=True)
+        year = request.query_params.get("Year", None)
+        forbes_list = forbesListModel.objects.all()
+        if year is not None:
+            forbes_list = forbes_list.filter(Year=year)
+        serializer = forbesListSerializer(forbes_list, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
