@@ -9,3 +9,4 @@ class forbesListSerializer(ModelSerializer):
     class Meta:
         model = forbesListModel
         fields = ["id", "Name", "Pay_USD", "Year", "Category"]
+
