@@ -14,8 +14,10 @@ class forbesListView(APIView):
     commonUtils = common.CommonUtilities()
 
     def get(self, request):
-        """get method for forbes list"""
-        """data is coming in string query"""
+        """
+        get method for forbes list
+        data is coming in string query
+        """
         year = request.query_params.get("Year", None)
         forbes_list = forbesListModel.objects.all()
         if year is not None:
@@ -25,11 +27,22 @@ class forbesListView(APIView):
             success=True,
             serializer=serializer,
             status_name=status.HTTP_200_OK,
-            message="data successfully ",
+            message="Data fetched successfully",
         )
 
     def post(self, request):
         """post method for forbes list"""
+        name = request.data.get("Name")
+        forbes_existing_data = forbesListModel.objects.filter(Name=name)
+
+        if forbes_existing_data.exists():
+            # existing_data = [
+            #    forbesListSerializer(data).data for data in forbes_existing_data
+            # ]
+            return self.commonUtils.get_response(
+                status_name=status.HTTP_409_CONFLICT,
+                message="Data already exists",
+            )
         serializer = forbesListSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -37,20 +50,21 @@ class forbesListView(APIView):
                 success=True,
                 serializer=serializer,
                 status_name=status.HTTP_201_CREATED,
-                message="data saved successfully",
+                message="Data saved successfully",
             )
         else:
             return self.commonUtils.get_response(
                 serializer=serializer,
                 status_name=status.HTTP_400_BAD_REQUEST,
-                message="data could not be saved",
+                message="Data could not be saved",
             )
 
     def delete(self, request):
-        """delete method for forbes list"""
-        """data is coming in payload"""
+        """
+        delete method for forbes list
+        data is coming in payload
+        """
         name = request.data.get("Name")
-        print("Name==", name)
         if not name:
             return self.commonUtils.get_response(
                 message="name is required.",
