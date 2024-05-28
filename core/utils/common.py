@@ -4,10 +4,9 @@ from rest_framework import status
 
 class CommonUtilities:
 
-    def get_response(self, success, serializer, status_name):
+    def get_response(self, success=False, serializer=[], status_name="", message=""):
         """method to get response on call of API"""
-        success_message = "successful"
-        failure_message = "failed"
+        print("00000000", serializer)
         error_messages = (
             [
                 f"{field}: {error}"
@@ -21,7 +20,7 @@ class CommonUtilities:
             "success": success,
             "status": status_name,
             "errors": error_messages,
-            "message": success_message if success else failure_message,
-            "data": serializer.data,
+            "message": message,
+            "data": serializer.data if serializer != [] else [],
         }
         return Response(error_response, status=status_name)
