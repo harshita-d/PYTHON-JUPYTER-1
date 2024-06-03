@@ -137,16 +137,27 @@ INSTALLED_APPS+=EXTERNAL_APPS
 
 - Model (models.py):
 
+  - Ensure data integrity at the database level.
   - Define the Product model with fields like name, price, quantity, etc.
   - Implement methods like get_discounted_price() or calculate_total_cost() within the model.
+  - When you want to enforce rules on the data regardless of where it's being manipulated
+
+  - How to implement:
+
+    - Field-level validations: Use field options like max_length, blank, null, unique, etc.
+    - Model-level validations: Override the clean method or use clean\_<fieldname> methods.
+    - Unique Constraints: Use unique or unique_together
 
 - View (views.py):
 
+  - Implement business logic validations that are specific to certain views.
   - Receive search queries from users.
   - Use the Product model's query methods to search for products matching the query.
   - Return search results to users.
 
 - Serializer (serializers.py) (If using Django REST Framework):
 
+  - Validate data when interacting through the API.
+  - When you want to enforce rules on data input through API endpoints, ensuring that invalid data is not processed further.
   - Validate search query parameters if the view is an API endpoint.
   - Serialize product data for API responses if necessary.

@@ -5,4 +5,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("movie/", include("home.urls")),
     path("forbes/", include("forbes_list.urls")),
+    path("", include("loginapp.urls")),
 ]

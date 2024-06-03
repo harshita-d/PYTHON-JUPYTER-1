@@ -115,3 +115,10 @@
 - configuring custom user model in project
 
   - in setting.py add `AUTH_USER_MODEL='user.UserProfile'`
+
+> Do You Need to Mention Email in REQUIRED_FIELDS?
+> No, you should not include email in REQUIRED_FIELDS because it's already specified as USERNAME_FIELD. The REQUIRED_FIELDS list should only include fields that are mandatory for creating a user but not used as the username. Including email in both places is redundant and unnecessary.
+
+> While you can manage the custom user model through the Django admin site without creating corresponding views and serializers, this approach limits your application's ability to handle user operations through an API.
+
+> Instead of hardcoding a reference to a specific user model, using get_user_model() ensures that your code will work with any user model configured in the Django settings.
