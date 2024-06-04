@@ -7,11 +7,15 @@ from .serializers import forbesListSerializer
 from utils import common
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import DatabaseError, IntegrityError, transaction
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 
 # Create your views here.
 class forbesListView(APIView):
     commonUtils = common.CommonUtilities()
+    authentication_class = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         """

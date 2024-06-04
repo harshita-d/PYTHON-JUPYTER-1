@@ -94,4 +94,8 @@ urlpatterns = [
 
 - In `function-based views` (FBVs), you define a `Python function` to handle a particular `URL pattern` directly. Unlike `class-based views` (CBVs), there's no need to use a method like as_view() because a `function itself` is already `callable`.
 
-#
+# Authentication
+
+- By setting permission_classes = [IsAuthenticated], Django REST framework automatically checks if the user is authenticated before allowing access to the view. If the user is not authenticated, a 401 Unauthorized response is returned automatically.
+
+- authentication_classes = [TokenAuthentication]: This specifies that the view uses token-based authentication.
