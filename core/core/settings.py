@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "loginapp",
     "home",
     "forbes_list",
+    "movies",
     "rest_framework",
     "rest_framework.authtoken",
 ]
