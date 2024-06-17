@@ -165,3 +165,5 @@ INSTALLED_APPS+=EXTERNAL_APPS
 - https://hrsd123.pythonanywhere.com/movie/list/
 - https://hrsd123.pythonanywhere.com/forbes/people/
 - https://hrsd123.pythonanywhere.com/admin/
+- https://hrsd123.pythonanywhere.com/login/
+- https://hrsd123.pythonanywhere.com/signin/
