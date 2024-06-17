@@ -161,3 +161,7 @@ INSTALLED_APPS+=EXTERNAL_APPS
   - When you want to enforce rules on data input through API endpoints, ensuring that invalid data is not processed further.
   - Validate search query parameters if the view is an API endpoint.
   - Serialize product data for API responses if necessary.
+## APIs deployed at
+- https://hrsd123.pythonanywhere.com/movie/list/
+- https://hrsd123.pythonanywhere.com/forbes/people/
+- https://hrsd123.pythonanywhere.com/admin/
