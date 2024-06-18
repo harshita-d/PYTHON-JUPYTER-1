@@ -11,10 +11,6 @@ class EmailAuthBackend(BaseBackend):
 
         try:
             user = User.objects.get(email=username)
-            print("password==", user.check_password(password))
-            print(f"Stored hashed password: {user.password}")
-            print(f"Plain password: {password}")
-
             if user.check_password(password):
                 return user
             else:
