@@ -37,12 +37,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "loginapp",
+    "rest_framework.authtoken",
     "home",
+    "loginapp",
     "forbes_list",
     "movies",
     "rest_framework",
-    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +55,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "loginapp.backends.EmailAuthBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [

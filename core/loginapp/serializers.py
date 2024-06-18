@@ -3,18 +3,23 @@ from django.contrib.auth import get_user_model, authenticate
 from loginapp import models
 from django.utils.translation import gettext_lazy as _
 
+User = get_user_model()
+
 
 class UserLoginSerializer(serializers.ModelSerializer):
     """serializer for user profile"""
 
     class Meta:
-        model = models.UserLoginProfile
-        fields = ("email", "username")
-        extra_kwargs = {"password": {"write_only": True, "min_length": 5}}
+        model = User
+        fields = ("email", "username", "password")
+        extra_kwargs = {
+            "password": {"write_only": True, "min_length": 5},
+        }
 
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
-        return models.UserLoginProfile.objects.create_user(**validated_data)
+        user = User.objects.create_user(**validated_data)
+        return user
 
 
 class AuthTokenSerializer(serializers.Serializer):
