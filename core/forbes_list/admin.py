@@ -1,5 +1,6 @@
 from django.contrib import admin
-from forbes_list import models
+
+""" from forbes_list import models
 
 # Register your models here.
-admin.site.register(models.forbesListModel)
+admin.site.register(models.forbesListModel) """
